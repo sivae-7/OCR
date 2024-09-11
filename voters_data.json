@@ -1,0 +1,50 @@
+[
+    {
+        "VoterID": "MML6114094",
+        "Name": "Ganesan",
+        "Relation": "Raingaseami",
+        "HouseNumber": "307",
+        "Age": "56",
+        "Gender": "Male"
+    },
+    {
+        "VoterID": "MML6114102",
+        "Name": "Saravanan",
+        "Relation": "Raingaseami",
+        "HouseNumber": "307",
+        "Age": "47",
+        "Gender": "Male"
+    },
+    {
+        "VoterID": "RRNO453175",
+        "Name": "Subha",
+        "Relation": "Saravanan",
+        "HouseNumber": "307",
+        "Age": "41",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "MML1506658",
+        "Name": "Manimekhalai",
+        "Relation": "Ramasamy",
+        "HouseNumber": "308",
+        "Age": "67",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "MML6180020",
+        "Name": "Thirumurugan",
+        "Relation": "Ramasamy",
+        "HouseNumber": "308",
+        "Age": "45",
+        "Gender": "Male"
+    },
+    {
+        "VoterID": "RRNO453183",
+        "Name": "Nathiya",
+        "Relation": "Thirumurugan",
+        "HouseNumber": null,
+        "Age": null,
+        "Gender": null
+    }
+]

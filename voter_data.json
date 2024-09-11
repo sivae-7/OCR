@@ -1,0 +1,218 @@
+[
+    {
+        "VoterID": "RRN2066280",
+        "Name": "UMASUNDARI",
+        "RelationType": "Father",
+        "RelationName": "ELANGOVAN",
+        "HouseNumber": "371",
+        "Age": "39",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RAN2069284",
+        "Name": "K Devika",
+        "RelationType": "Father",
+        "RelationName": "Kavaskar",
+        "HouseNumber": "310 447",
+        "Age": "30",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RRN2076461",
+        "Name": "arunthathi",
+        "RelationType": "Father",
+        "RelationName": "kesavan",
+        "HouseNumber": "2811",
+        "Age": "19",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RRN2076479",
+        "Name": "alex",
+        "RelationType": "Father",
+        "RelationName": "john peter",
+        "HouseNumber": "268",
+        "Age": "19",
+        "Gender": "Male"
+    },
+    {
+        "VoterID": "RRN2076487",
+        "Name": "logavigneshwaran",
+        "RelationType": "Father",
+        "RelationName": "jayabal",
+        "HouseNumber": "408",
+        "Age": "19",
+        "Gender": "Male"
+    },
+    {
+        "VoterID": "RRN2076495",
+        "Name": "arivuviagan",
+        "RelationType": "Father",
+        "RelationName": "pazahivel",
+        "HouseNumber": "4002",
+        "Age": "20",
+        "Gender": ""
+    },
+    {
+        "VoterID": "RRN2077774",
+        "Name": "Thayasti B",
+        "RelationType": "Father",
+        "RelationName": "Balasubramaniyan",
+        "HouseNumber": "407",
+        "Age": "19",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RRN2077899",
+        "Name": "Srinithi R",
+        "RelationType": "Father",
+        "RelationName": "Rajendran",
+        "HouseNumber": "497",
+        "Age": "19",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RRN2078095",
+        "Name": "Harithira V",
+        "RelationType": "Father",
+        "RelationName": "Venkatachalam",
+        "HouseNumber": "438",
+        "Age": "19",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RRN2078137",
+        "Name": "Sudarvizhi V",
+        "RelationType": "Father",
+        "RelationName": "Venkatachalam",
+        "HouseNumber": "438",
+        "Age": "18",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RRN2078152",
+        "Name": "Harishkumaran G",
+        "RelationType": "Father",
+        "RelationName": "Govindaraj",
+        "HouseNumber": "374",
+        "Age": "18",
+        "Gender": "Male"
+    },
+    {
+        "VoterID": "RRN2078574",
+        "Name": "Hariharasudhan T",
+        "RelationType": "Father",
+        "RelationName": "Thiruselvan",
+        "HouseNumber": "297",
+        "Age": "20",
+        "Gender": "Male"
+    },
+    {
+        "VoterID": "RRN2081628",
+        "Name": "Vidhyadevi G",
+        "RelationType": "Father",
+        "RelationName": "Govindaraj",
+        "HouseNumber": "374",
+        "Age": "19",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RRN2081735",
+        "Name": "Narmatha Devi G",
+        "RelationType": "Father",
+        "RelationName": "Govindaraj",
+        "HouseNumber": "37551",
+        "Age": "22",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RRN2083327",
+        "Name": "Nitharshini R",
+        "RelationType": "Father",
+        "RelationName": "Rajagopal",
+        "HouseNumber": "259",
+        "Age": "19",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RRN2098465",
+        "Name": "Yuvaraj",
+        "RelationType": "Father",
+        "RelationName": "Karikalan",
+        "HouseNumber": "306",
+        "Age": "20",
+        "Gender": "Male"
+    },
+    {
+        "VoterID": "FRRN2098671",
+        "Name": "Anusiya",
+        "RelationType": "Father",
+        "RelationName": "Amulraj",
+        "HouseNumber": "275",
+        "Age": "18",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RRN2099042",
+        "Name": "Suthan",
+        "RelationType": "Father",
+        "RelationName": "Tamilselvan",
+        "HouseNumber": "319",
+        "Age": "25",
+        "Gender": "Male"
+    },
+    {
+        "VoterID": "RRN2099083",
+        "Name": "Joycereshma",
+        "RelationType": "Father",
+        "RelationName": "Arockiyaraj",
+        "HouseNumber": "275",
+        "Age": "20",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RRN2099117",
+        "Name": "Deepanraj",
+        "RelationType": "Father",
+        "RelationName": "Michealraj",
+        "HouseNumber": "278",
+        "Age": "25",
+        "Gender": "Male"
+    },
+    {
+        "VoterID": "RAN2099422",
+        "Name": "Reginamary",
+        "RelationType": "Father",
+        "RelationName": "Arockiyasamy",
+        "HouseNumber": "279",
+        "Age": null,
+        "Gender": null
+    },
+    {
+        "VoterID": "RRN2102861",
+        "Name": "elamurugan",
+        "RelationType": "Father",
+        "RelationName": "jayabal",
+        "HouseNumber": "408",
+        "Age": "18",
+        "Gender": "Male"
+    },
+    {
+        "VoterID": "RRN2103877",
+        "Name": "Kalaiyarasi",
+        "RelationType": "Father",
+        "RelationName": "Thanikodi",
+        "HouseNumber": "474",
+        "Age": "67",
+        "Gender": "Female"
+    },
+    {
+        "VoterID": "RAN2104495",
+        "Name": "HARINI S",
+        "RelationType": "Father",
+        "RelationName": "SARAVANAN",
+        "HouseNumber": "295",
+        "Age": "19",
+        "Gender": "Female"
+    }
+]
