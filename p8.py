@@ -9,7 +9,7 @@ folder_path = './images'
 def is_valid_voter(voter):
     return any(voter[key] for key in voter)
 
-def parse_voter_section(section):
+def parse_voter_section(section, part_No, ward_No, constituency_Name, section_Name):
     lines = section.split('\n')
     if len(lines) <= 5:
         return []
@@ -47,7 +47,11 @@ def parse_voter_section(section):
             "HouseNumber": house_numbers[i] if i < len(house_numbers) else None,
             "Age": age,
             "Gender": gender,
-        }
+            "SectionName" : section_Name,
+            "WardNo" : ward_No,
+            "PartNO" : part_No,
+            "constituencyName" : constituency_Name
+                            }
         if is_valid_voter(voter):
             voters.append(voter)
     
@@ -55,8 +59,10 @@ def parse_voter_section(section):
 
 
 all_voters = []
-
+i=1
 for filename in os.listdir(folder_path):
+    print(i, "  ",filename)
+    i=i+1
     if filename.endswith(".png") or filename.endswith(".jpg"):
         image_path = os.path.join(folder_path, filename)
         image = Image.open(image_path)
@@ -65,13 +71,40 @@ for filename in os.listdir(folder_path):
 
         cleaned_text = re.sub(r'[^\w\s]', '', ocr_text)
         sections = re.split(r'\n(?=\d{1,4}[\)\.,\s]?\s*)', cleaned_text)
+
+        header = list(filter(lambda x: x.strip(), (sections[0]).split('\n')))
+        header_text = ' '.join(header)
+        numbers = re.findall(r'\d+', header_text)
+        numbers = [int(num) for num in numbers]
+        constituency_No = numbers[0]
+        part_No = numbers[1]
+        ward_No = ""
+        if(len(numbers)>2):
+            ward_No = numbers[3]
+            
+
+        def process_first_string(text):
+            text = re.sub(r'Assembly Constituency No and Name\s*|\s*Part No\s*\d+', '', text)
+            text = re.sub(r'\d+', '', text)
+            return text.strip()
+
+        def process_second_string(text):
+            text = re.sub(r'Section No and Name\s*|\s*wd\d*|\s*WARD NO\s*\d*', '', text)
+            text = re.sub(r'\d+', '', text)
+            return text.strip()
+
+        constituency_Name = process_first_string(header[0])
+        section_Name = ""
+        if(len(numbers) > 2):
+            section_Name = process_second_string(header[1])
+
         sections = sections[1:]
 
         for section in sections:
-            voters = parse_voter_section(section)
+            voters = parse_voter_section(section, part_No, ward_No, constituency_No, section_Name)
             if voters:  
                 all_voters.extend(voters)
-        print(len(all_voters))
+        print("------",len(all_voters))
 voters_json = json.dumps(all_voters, indent=4)
 print(f"Total voters extracted: {len(all_voters)}")
 
