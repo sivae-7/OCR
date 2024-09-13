@@ -2,7 +2,7 @@
   "name": "ocr",
   "version": "1.0.0",
   "description": "",
-  "main": "pdfToImage2.js",
+  "main": "p10.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "csv-writer": "^1.6.0",
+    "pdf-image": "^2.0.0",
+    "pdf-image-extractor": "^2.0.8",
     "pdf-lib": "^1.17.1",
     "tesseract.js": "^5.1.1",
     "text-from-pdf": "^1.1.2"

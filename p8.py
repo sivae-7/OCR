@@ -7,7 +7,9 @@ import os
 folder_path = './images'
 
 def is_valid_voter(voter):
-    return any(voter[key] for key in voter)
+    if voter.get('VoterID'):
+        return any(voter[key] for key in voter)
+    return False
 
 def parse_voter_section(section, part_No, ward_No, constituency_Name, section_Name):
     lines = section.split('\n')
@@ -60,6 +62,7 @@ def parse_voter_section(section, part_No, ward_No, constituency_Name, section_Na
 
 all_voters = []
 i=1
+j=0
 for filename in os.listdir(folder_path):
     print(i, "  ",filename)
     i=i+1
@@ -98,13 +101,27 @@ for filename in os.listdir(folder_path):
         if(len(numbers) > 2):
             section_Name = process_second_string(header[1])
 
+        subSections = re.split(r'\n(?=\w{1,4}\s+\w{1,4}\d{6,9}[\)\.,\s]?\s*)', sections[0])
+        if(len(subSections)>1):
+            sections.append(subSections[1])
         sections = sections[1:]
-
+        # sections[0] = re.sub(r'\s+', ' ', sections[0]).strip()
         for section in sections:
+            if(len(section)>500):
+                subSections = re.split(r'\n(?=\w{1,4}\s+\w{1,4}\d{6,9}[\)\.,\s]?\s*)', section)
+                if len(subSections)==1:
+                    subSections = re.split(r'\n(?=(RRNO|FRNO|RRN)[\)\.,\s]?\s*)', section)
+                for subSection in subSections:
+                    if(len(subSection)>100 and subSection != subSections[0]):
+                        sections.append(subSection)
+
+            pattern = r'^\s*(\d{1,4}|\w{1,4})\s+'
+            section = re.sub(pattern, '', section)
             voters = parse_voter_section(section, part_No, ward_No, constituency_No, section_Name)
             if voters:  
                 all_voters.extend(voters)
-        print("------",len(all_voters))
+        print("------",len(all_voters)-j)
+        j=len(all_voters)
 voters_json = json.dumps(all_voters, indent=4)
 print(f"Total voters extracted: {len(all_voters)}")
 

@@ -2,7 +2,6 @@ const { pdfToText } = require('text-from-pdf');
 const { PDFDocument } = require('pdf-lib');
 const fs = require('fs');
 
-// Function to get the number of pages in the PDF
 async function getPageCount(pdfPath) {
   const data = fs.readFileSync(pdfPath);
   const pdfDoc = await PDFDocument.load(data);
