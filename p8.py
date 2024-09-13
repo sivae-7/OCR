@@ -7,7 +7,10 @@ import os
 folder_path = './images'
 
 def is_valid_voter(voter):
-    if voter.get('VoterID'):
+    voter_id_pattern = r'\d{3,}'
+
+    voter_id = voter.get('VoterID')
+    if voter_id and re.search(voter_id_pattern, voter_id):
         return any(voter[key] for key in voter)
     return False
 
@@ -107,6 +110,7 @@ for filename in os.listdir(folder_path):
         sections = sections[1:]
         # sections[0] = re.sub(r'\s+', ' ', sections[0]).strip()
         for section in sections:
+            # print(section)
             if(len(section)>500):
                 subSections = re.split(r'\n(?=\w{1,4}\s+\w{1,4}\d{6,9}[\)\.,\s]?\s*)', section)
                 if len(subSections)==1:

@@ -3,7 +3,7 @@ import json
 import pytesseract
 from PIL import Image
 
-image_path = './images/2024-FC-EROLLGEN-S22-175-FinalRoll-Revision2-ENG-185-WI-27.png'
+image_path = './images/2024-FC-EROLLGEN-S22-175-FinalRoll-Revision2-ENG-185-WI-19.png'
 
 image = Image.open(image_path)
 
@@ -40,9 +40,16 @@ if(len(numbers) > 2):
     section_Name = process_second_string(header[1])
 
 def is_valid_voter(voter):
-    if voter.get('VoterID'):
+    voter_id_pattern = r'\d{3,}'
+    voter_id = voter.get('VoterID')
+    # print(voter_id)
+    if voter_id and re.search(voter_id_pattern, voter_id):
+        # print(voter.get('VoterID'))
         return any(voter[key] for key in voter)
+    print(voter_id)
     return False
+
+
 
 def parse_voter_section(section):
     lines = section.split('\n')
@@ -97,8 +104,8 @@ if(len(subSections)>1):
 sections = sections[1:]
 patt = r'\n*(\d{1,4}|\w{1,4})\s+(RRNO|FRNO|RRN)'
 for section in sections:
-    # print("*******",section,"*********")
-    print(len(section))
+    print("*******",section,"*********")
+    # print(len(section))
     print()
     if(len(section)>500 ):
         subSections = re.split(r'\n(?=\w{1,4}\s+\w{1,4}\d{6,9}[\)\.,\s]?\s*)', section)
