@@ -3,6 +3,11 @@ import json
 import pytesseract
 from PIL import Image
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+voter_data_path = os.getenv('VOTER_DATA_PATH')
+missed_voter_pages_path = os.getenv('MISSED_VOTER_PAGES_PATH')
 
 folder_path = '/home/shiva/Documents/OCR/test2'
 all_voters = []
@@ -205,9 +210,9 @@ def extract_voter_data(folder_path):
     missedVoterPage = json.dumps(missed_voter_pages, indent=4)
 
 
-    with open("./voter_data.json", "w") as file:
+    with open(voter_data_path, "w") as file:
         file.write(voters_json)
-    with open("/home/shiva/Documents/OCR/missedVoterPages.json", "w") as file:
+    with open(missed_voter_pages_path, "w") as file:
         file.write(missedVoterPage)
 
 def main():
