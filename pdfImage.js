@@ -26,5 +26,5 @@ async function extractTextFromPDF(pdfPath) {
   }
 }
 
-const pdfPath = '/home/shiva/Documents/OCR/utils/2024-FC-EROLLGEN-S22-175-FinalRoll-Revision2-ENG-185-WI.pdf';
+const pdfPath = '/home/shiva/Documents/OCR/utils/Booth77Rolls.pdf';
 extractTextFromPDF(pdfPath);
