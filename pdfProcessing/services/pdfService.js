@@ -1,4 +1,4 @@
-import pdfToText from 'text-from-pdf';
+import {pdfToText} from 'text-from-pdf';
 import  {PDFDocument}  from 'pdf-lib';
 import fs from 'fs';
 import  path from 'path';
