@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
 
 class Batch extends Model {}
 
@@ -27,4 +27,4 @@ Batch.init({
     timestamps: false, 
 });
 
-module.exports = Batch;
+export default Batch;

@@ -1,13 +1,14 @@
-const { Worker } = require("bullmq");
-const { Task } = require("../models/task"); 
-const { Batch } = require("../models/batch");
-const processCreatedPDF  = require("../services/pdfService.js")
-const { connection , pdfQueue } = require("./queue.js");
+import { Worker }from "bullmq"
+import Task from "../models/task" 
+import Batch from "../models/batch" 
+import processCreatedPDF  from "../services/pdfService.js"
+import {connection,pdfQueue} from "./queue.js"
 
 const worker = new Worker(pdfQueue, processPdf, { connection });
 
 async function processPdf() {
      try {
+        console.log("processing pdf ......")
        const pdfRecords = await Batch.findAll({
 
          where: { status: "created" },
@@ -23,6 +24,7 @@ async function processPdf() {
             imgfolderpath: imgfolderpath,
             status: "created",
          });
+         console.log("one task created...")
        }
      } catch (error) {
        console.error("Error fetching PDF paths from the database:", error);
