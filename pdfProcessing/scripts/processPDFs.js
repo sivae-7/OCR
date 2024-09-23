@@ -14,7 +14,7 @@ async function main() {
       } catch (error) {
         console.error('Error during job scheduling:', error);
       }
-    }, 2*60000);
+    }, 10000);
     console.log('Job scheduler started.'); 
   } catch (error) {
     console.error('Error establishing database connection:', error);
