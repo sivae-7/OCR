@@ -51,8 +51,8 @@ def process_pdf_folder(pdf_folder, images_output_folder, poppler_path=None):
         logging.error(f"Error processing PDF folder {pdf_folder}: {e}")
 
 if __name__ == "__main__":
-    pdf_folder = '/home/shiva/Documents/OCR/utils'
-    images_output_folder = '/home/shiva/Documents/OCR/pdfImgaes'
+    pdf_folder = '/home/shiva/Documents/OCR/pdfProcessing/utils'
+    images_output_folder = '/home/shiva/Documents/OCR/pdfProcessing/pdfImgaes'
     poppler_path = None
 
     process_pdf_folder(pdf_folder, images_output_folder, poppler_path)

@@ -21,7 +21,6 @@ async function extractTextFromPDF(pdfPath) {
     const text = await pdfToText(pdfPath, options);
     console.log(`Text extracted from ${pdfPath}:`);
     console.log(text);
-    // await runPythonScript();
   } catch (error) {
     console.error(`Error processing ${pdfPath}:`, error);
   }
@@ -42,5 +41,5 @@ async function processPDFFolder(folderPath) {
   }
 }
 
-const folderPath = '/home/shiva/Documents/OCR/utils/';
+const folderPath = '/home/shiva/Documents/OCR/pdfProcessing/utils';
 processPDFFolder(folderPath);
