@@ -1,13 +1,14 @@
 import { Worker }from "bullmq"
-import Task from "../models/task" 
-import Batch from "../models/batch" 
-import processCreatedPDF  from "../services/pdfService.js"
+import Task from "../models/task.js" 
+import Batch from "../models/batch.js" 
+import processCreatedPDFs  from "../services/pdfService.js"
 import {connection,pdfQueue} from "./queue.js"
 
-const worker = new Worker(pdfQueue, async (job) => {
+const worker = new Worker('pdfQueue', async (job) => {
     try {
-        const { pdfid, pdfPath } = pdfRecord
-        const imgfolderpath = await processCreatedPDF(pdfPath);
+        console.log("pdfprocessing started......")
+        const { pdfid, pdfPath } = job.data
+        const imgfolderpath = await processCreatedPDFs(pdfPath);
 
         await Task.create({
             pdfid: pdfid,
@@ -16,6 +17,7 @@ const worker = new Worker(pdfQueue, async (job) => {
         });
 
         await Batch.update({ status: "processed" }, { where: { pdfid: pdfid } });
+        console.log("pdf processing completed......")
        
     } catch (error) {
       console.error("Error fetching PDF paths from the database:", error);
@@ -23,11 +25,10 @@ const worker = new Worker(pdfQueue, async (job) => {
 }, { connection });
        
 worker.on("completed", (job) => {
-  // run the image to text here after the pdf to image is done.
   console.log(`Job ${job.id} completed successfully`);
 });
 worker.on("failed", (job, error) => {
   console.error(`Failed job with ID ${job.id}:`, error);
 });
 
-module.exports = processPdf;
+export default worker;

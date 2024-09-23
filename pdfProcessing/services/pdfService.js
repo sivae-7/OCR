@@ -1,7 +1,7 @@
-const { pdfToText } = require('text-from-pdf');
-const { PDFDocument } = require('pdf-lib');
-const fs = require('fs');
-const path = require('path');
+import pdfToText from 'text-from-pdf';
+import  {PDFDocument}  from 'pdf-lib';
+import fs from 'fs';
+import  path from 'path';
 
 
 async function processCreatedPDFs(pdfPath) {
@@ -90,6 +90,4 @@ async function moveImagesBeforeNextPDF() {
 
 
 
-module.exports = {
-  processCreatedPDFs,
-};
+export default processCreatedPDFs;
