@@ -2,8 +2,17 @@ const { pdfToText } = require('text-from-pdf');
 const { PDFDocument } = require('pdf-lib');
 const fs = require('fs');
 const path = require('path');
-const Batch = require('../models/batch');
 
+
+async function processCreatedPDFs(pdfPath) {
+  try {
+    await extractTextFromPDF(pdfPath);
+    return await moveImagesBeforeNextPDF();
+    
+  } catch (error) {
+    console.error('Error fetching PDF paths from the database:', error);
+  }
+}
 async function getPageCount(pdfPath) {
   const data = fs.readFileSync(pdfPath);
   const pdfDoc = await PDFDocument.load(data);
@@ -25,25 +34,6 @@ async function extractTextFromPDF(pdfPath) {
   }
 }
 
-async function processCreatedPDFs() {
-  try {
-    const pdfRecords = await Batch.findAll({
-      where: { status: 'created' },
-    });
-
-    const pdfPaths = pdfRecords.map(record => record.pdfpath);
-
-    for (const pdfPath of pdfPaths) {
-      await extractTextFromPDF(pdfPath);
-      console.log(" images from  one pdf extracted ")
-      await moveImagesBeforeNextPDF();
-
-    }
-  } catch (error) {
-    console.error('Error fetching PDF paths from the database:', error);
-  }
-}
-
 
 function moveImagesAsync(sourceDir, targetDir) {
   return new Promise((resolve, reject) => {
@@ -62,7 +52,7 @@ function moveImagesAsync(sourceDir, targetDir) {
               return new Promise((resolve, reject) => {
                   const sourceFilePath = path.join(sourceDir, file);
                   const targetFilePath = path.join(targetDir, file);
-
+                  
                   fs.rename(sourceFilePath, targetFilePath, (err) => {
                       if (err) return reject(err);
                       console.log(`Moved file: ${file}`);
@@ -92,10 +82,13 @@ async function moveImagesBeforeNextPDF() {
   try {
       await moveImagesAsync(sourceDir, targetDir);
       console.log('All images moved successfully!');
+      return targetDir;
   } catch (error) {
       console.error('Error moving images:', error);
   }
 }
+
+
 
 module.exports = {
   processCreatedPDFs,

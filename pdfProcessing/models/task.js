@@ -4,11 +4,11 @@ const sequelize = require('../config/database');
 class Task extends Model {}
 
 Task.init({
-    imgid: {
+    imgfolderid: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        field: 'pdfid', 
+        field: 'imgfolderid', 
     },
     pdfid: {
         type: DataTypes.INTEGER,
@@ -17,10 +17,10 @@ Task.init({
           key: 'pdfid',
         },
     },
-    imgpath: {
+    imgfolderpath: {
         type: DataTypes.TEXT,
         allowNull: false,
-        field: 'pdfpath', 
+        field: 'imgfolderpath', 
     },
     status: {
         type: DataTypes.STRING(50),
