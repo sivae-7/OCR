@@ -12,7 +12,7 @@ async function scheduleJobs(){
                 pdfPath : batch.pdfpath
             })
 
-            await Batch.update({status : 'processing'});
+            await Batch.update({status : 'processing'},{ where: { id: batch.pdfid }});
         }
     }
     catch(error){
