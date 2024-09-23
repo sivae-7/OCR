@@ -4,33 +4,24 @@ import Batch from "../models/batch"
 import processCreatedPDF  from "../services/pdfService.js"
 import {connection,pdfQueue} from "./queue.js"
 
-const worker = new Worker(pdfQueue, processPdf, { connection });
+const worker = new Worker(pdfQueue, async (job) => {
+    try {
+        const { pdfid, pdfPath } = pdfRecord
+        const imgfolderpath = await processCreatedPDF(pdfPath);
 
-async function processPdf() {
-     try {
-        console.log("processing pdf ......")
-       const pdfRecords = await Batch.findAll({
-
-         where: { status: "created" },
-       });
-
-
-       for (const pdfRecord of pdfRecords) {
-         const { pdfid, pdfPath } = pdfRecord
-         const imgfolderpath = await processCreatedPDF(pdfPath);
-
-         await Task.create({
+        await Task.create({
             pdfid: pdfid,
             imgfolderpath: imgfolderpath,
             status: "created",
-         });
-         console.log("one task created...")
-       }
-     } catch (error) {
-       console.error("Error fetching PDF paths from the database:", error);
-     }
-}
+        });
 
+        await Batch.update({ status: "processed" }, { where: { pdfid: pdfid } });
+       
+    } catch (error) {
+      console.error("Error fetching PDF paths from the database:", error);
+    }
+}, { connection });
+       
 worker.on("completed", (job) => {
   // run the image to text here after the pdf to image is done.
   console.log(`Job ${job.id} completed successfully`);
